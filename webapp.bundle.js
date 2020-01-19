@@ -7844,7 +7844,6 @@
               // let ped = await miband.getPedometerStats();
               // log("Pedometer:", JSON.stringify(ped));
 
-
               // log("Heart Rate Monitor (single-shot)");
               // log("Result:", await miband.hrmRead());
 
@@ -7858,15 +7857,42 @@
             }
 
             async function getHRMSingle(miband, log) {
-              log("Heart Rate Monitor (single-shot)");
-              log("Result:", await miband.hrmRead());
+              let existing = localStorage.getItem("heart_rate");
+              let value = await miband.hrmRead();
+              existing = existing ? JSON.parse(existing) : [];
+              existing.push({ val: value, date: new Date().toLocaleTimeString() });
+              localStorage.setItem("heart_rate", JSON.stringify(existing));
+              log("Pomiar pulsu");
+              log("Wynik:", value);
             }
 
             async function getHMRMultiple(miband, log) {
-              miband.on("heart_rate", rate => {
-                log("Heart Rate:", rate);
-              });
-              await miband.hrmStart();
+              let time = document.getElementById("time").value;
+              let num = document.getElementById("num").value;
+              // miband.on("heart_rate", rate => {
+              //   log(rate);
+              //   let existing = localStorage.getItem("heart_rate");
+
+              //   // If no existing data, create an array
+              //   // Otherwise, convert the localStorage string to an array
+              //   existing = existing ? JSON.parse(existing) : [];
+
+              //   // Add new data to localStorage Array
+              //   existing.push({ val: rate, date: new Date().toLocaleTimeString() });
+
+              //   // Save back to localStorage
+              //   localStorage.setItem("heart_rate", JSON.stringify(existing));
+              // });
+              // await miband.hrmStart();
+              let btn = document.getElementById("multiHeartRate");
+              btn.disabled = true;
+              for(let i = 0; i < num; i++)
+              {
+                getHRMSingle(miband, log);
+                await delay(time*60000);
+              }  
+              btn.disabled = false;
+
             }
             async function HMRStop(miband, log) {
               await miband.hrmStop();
@@ -7877,7 +7903,7 @@
             var test_3 = test.getHMRMultiple;
             var test_4 = test.HMRStop;
 
-            __$styleInject("html {\n  background: #eee;\n}\nbody {\n  max-width: 960px;\n  width: 80%;\n  box-sizing: border-box;\n  margin: 50px auto;\n  min-height: calc(100vh - 100px);\n  background: #000;\n  box-shadow: 0 0 96px black;\n  border-radius: 16px;\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n  font-family: monospace;\n}\nheader {\n  padding: 4px 16px 0px;\n  background: #333;\n  border-radius: 16px;\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n  display: flex;\n  justify-content: space-between;\n  font-family: \"Arial\";\n}\nmain {\n  background: black;\n  color: white;\n  padding: 4px 16px;\n  overflow-y: auto;\n  max-height: calc(100vh - 164px);\n}\n#output {\n  margin: 0;\n}\nh1 {\n  text-shadow: 1px 1px 0 black;\n  font-size: 28px;\n  margin: 10px 0;\n  cursor: pointer;\n  color: transparent;\n}\nh1:hover .h1-left,\nh1:hover .h1-right {\n  color: #fff;\n}\nh1 .h1-left {\n  color: #A9D96C;\n  transition: 0.25s ease-in-out color;\n}\nh1 .h1-right {\n  margin-left: -6px;\n  color: #41c5f4;\n  transition: 0.25s ease-in-out color;\n}\nh1 a {\n  color: transparent;\n  text-decoration: none;\n}\n.btn-scan {\n  margin: 12px 0;\n  padding: 0 24px;\n  cursor: pointer;\n  background: #A9D96C;\n  border: none;\n  color: white;\n  font-weight: bold;\n  border-radius: 4px;\n  outline: none;\n  transition: 0.25s ease-in-out color;\n}\n.btn-scan:hover {\n  color: black;\n}\n.fork-me {\n  position: fixed;\n  top: 0;\n  right: 0;\n  border: 0;\n  z-index: -1;\n  transform: rotate(90deg);\n}\n");
+            __$styleInject("html {\n  background: #eee;\n}\n.time {\n  width: 100px;\n  height: 20px;\n  border: 1px solid orange;\n  border-radius: 10px;\n  margin-left: 15px;\n}\nbody {\n  height: 100vh;\n  margin: 0;\n}\nmain {\n  overflow: scroll;\n  height: 150px;\n  width: 100%;\n}\nbutton {\n  background-color: orange;\n  color: black;\n  border: none;\n  margin: 15px 10px 15px 10px;\n  padding: 10px 15px 10px 15px;\n  transition: all 0.4s ease-in-out;\n  width: 200px;\n  border-radius: 10px;\n}\nbutton:hover {\n  cursor: pointer;\n  background-color: #4e1900;\n  color: white;\n}\n");
 
             const bluetooth = navigator.bluetooth;
 
@@ -7896,19 +7922,19 @@
               }
 
               try {
-                log$1("Requesting Bluetooth Device...");
+                log$1("Próba połączenia...");
                 const device = await bluetooth.requestDevice({
                   filters: [{ services: [miband.advertisementService] }],
                   optionalServices: miband.optionalServices
                 });
 
                 device.addEventListener("gattserverdisconnected", () => {
-                  log$1("Device disconnected");
+                  log$1("Rozłączono");
                 });
 
                 await device.gatt.disconnect();
 
-                log$1("Connecting to the device...");
+                log$1("Łączenie z urządzeniem...");
                 const server = await device.gatt.connect();
                 log$1("Connected");
                 document.getElementById("singleHeartRate").disabled = false;
@@ -7919,11 +7945,9 @@
                   test_2(miband$$1, log$1);
                 });
 
-                document
-                  .getElementById("multiHeartRate")
-                  .addEventListener("click", () => {
-                    test_3(miband$$1, log$1);
-                  });
+                document.getElementById("multiHeartRate").addEventListener("click", () => {
+                  test_3(miband$$1, log$1);
+                });
 
                 document.getElementById("stop").addEventListener("click", () => {
                   test_4(miband$$1, log$1);
