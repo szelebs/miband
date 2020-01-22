@@ -36,7 +36,7 @@ async function scan() {
 
     log("Łączenie z urządzeniem...");
     const server = await device.gatt.connect();
-    log("Connected");
+    log("Połączono");
     document.getElementById("singleHeartRate").disabled = false;
     let miband = new MiBand(server);
 
