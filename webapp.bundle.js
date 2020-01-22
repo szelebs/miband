@@ -7962,6 +7962,7 @@
 
                 await miband$$1.init();
                 document.getElementById("singleHeartRate").addEventListener("click", () => {
+                  console.log("KLIKLENTE 2");
                   test_2(miband$$1, log$1);
                 });
 
@@ -7974,6 +7975,7 @@
                 });
 
                 document.getElementById("errors").addEventListener("click", () => {
+                  console.log("KLIKLENTE");
                   document.getElementsByClass("err-modal").classList.add('err-modal-visible');
                 });
 
