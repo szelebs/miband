@@ -123,6 +123,7 @@ setInterval(() => {
 
 function getErrorsData() {
   let errorsText = localStorage.getItem("errors");
+  console.log(errorsText);
 
   if (errorsText !== "") {
     return JSON.parse(errorsText);
