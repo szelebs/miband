@@ -55,14 +55,20 @@ async function getHRMSingle(miband, log) {
     log("Wynik:", value, " bpm");
   } catch (error) {
     console.log(error);
-    let errors = localStorage.getItem("errors") || [];
+    let errors = [];
+    let errorsText = localStorage.getItem("errors");
+    
+    if (errorsText !== "") {
+      errors = JSON.parse(errorsText);
+    }
+
     let newError = {
       date: new Date().toLocaleTimeString(),
       errorCode: ErrorCodes.hrmTimeout
     };
 
     errors.push(newError);
-    localStorage.setItem("errors", errors);
+    localStorage.setItem("errors", JSON.stringify(errors));
   }
 }
 
