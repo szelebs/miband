@@ -42,6 +42,7 @@ async function test_all(miband, log) {
 }
 
 async function getHRMSingle(miband, log) {
+  console.log("KLIKLENTE 2");
   log("Rozpoczęto pomiar pulsu...");
   let existing = localStorage.getItem("heart_rate");
 

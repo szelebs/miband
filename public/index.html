@@ -34,6 +34,12 @@
 
     <!-- Errors modal -->
     <div class="err-modal">
+      <div class="err-table-wrapper">
+        <div id="err-table"></div>
+      </div>
+      <div class="close-btn-wrapper">
+        <button id="err-modal-close">Zamknij</button>
+      </div>
     </div>
 
     <script src="webapp.bundle.js"></script>
@@ -53,6 +59,16 @@
         document.execCommand("copy");
         console.log('skopiowano');
       }
+
+      document.getElementById("errors").addEventListener("click", () => {
+        document.getElementsByClassName("err-modal")[0].classList.add("err-modal-visible");
+        let errors = getErrorsData();
+        console.log(errors);
+      });
+
+      document.getElementById("err-modal-close").addEventListener("click", () => {
+        document.getElementsByClassName("err-modal")[0].classList.remove("err-modal-visible");
+      });
 var options = {
   type: 'line',
   data: {
@@ -105,6 +121,9 @@ setInterval(() => {
   }
 }, 5000);
 
+function getErrorsData() {
+  return localStorage.getItem("errors") || [];
+}
     </script>
   </body>
 </html>
