@@ -54,6 +54,7 @@ async function getHRMSingle(miband, log) {
     
     log("Wynik:", value, " bpm");
   } catch (error) {
+    console.log(error);
     let errors = localStorage.getItem("errors") || [];
     let newError = {
       date: new Date().toLocaleTimeString(),
@@ -61,6 +62,7 @@ async function getHRMSingle(miband, log) {
     };
 
     errors.push(newError);
+    localStorage.setItem("errors", errors);
   }
 }
 
