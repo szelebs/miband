@@ -7923,7 +7923,7 @@
             var test_3 = test.getHMRMultiple;
             var test_4 = test.HMRStop;
 
-            __$styleInject("html {\n  background: #eee;\n}\n.time {\n  width: 100px;\n  height: 20px;\n  border: 1px solid orange;\n  border-radius: 10px;\n  margin-left: 15px;\n}\nbody {\n  height: 100vh;\n  margin: 0;\n}\nmain {\n  overflow: scroll;\n  height: 150px;\n  width: 100%;\n}\nbutton {\n  background-color: orange;\n  color: black;\n  border: none;\n  margin: 15px 10px 15px 10px;\n  padding: 10px 15px 10px 15px;\n  transition: all 0.4s ease-in-out;\n  width: 200px;\n  border-radius: 10px;\n}\nbutton:hover {\n  cursor: pointer;\n  background-color: #4e1900;\n  color: white;\n}\n.err-modal {\n  display: absolute;\n  left: 50%;\n  width: 300px;\n  height: 300px;\n  background-color: cyan;\n}\n");
+            __$styleInject("html {\n  background: #eee;\n}\n.time {\n  width: 100px;\n  height: 20px;\n  border: 1px solid orange;\n  border-radius: 10px;\n  margin-left: 15px;\n}\nbody {\n  height: 100vh;\n  margin: 0;\n}\nmain {\n  overflow: scroll;\n  height: 150px;\n  width: 100%;\n}\nbutton {\n  background-color: orange;\n  color: black;\n  border: none;\n  margin: 15px 10px 15px 10px;\n  padding: 10px 15px 10px 15px;\n  transition: all 0.4s ease-in-out;\n  width: 200px;\n  border-radius: 10px;\n}\nbutton:hover {\n  cursor: pointer;\n  background-color: #4e1900;\n  color: white;\n}\n.err-modal {\n  position: absolute;\n  top: 50%;\n  left: calc(-450%);\n  width: 500px;\n  height: 300px;\n  background-color: #bebebe;\n  border-radius: 10px;\n  visibility: hidden;\n}\n.err-modal-visible {\n  visibility: visible;\n}\n");
 
             const bluetooth = navigator.bluetooth;
 
@@ -7972,6 +7972,11 @@
                 document.getElementById("stop").addEventListener("click", () => {
                   test_4(miband$$1, log$1);
                 });
+
+                document.getElementById("errors").addEventListener("click", () => {
+                  document.getElementsByClass("err-modal").classList.add('err-modal-visible');
+                });
+
                 // await test_all(miband, log);
               } catch (error) {
                 log$1("Argh!", error);
