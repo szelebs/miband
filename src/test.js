@@ -53,7 +53,7 @@ async function getHRMSingle(miband, log) {
     
     log("Wynik:", value, " bpm");
   } catch (error) {
-    let errors = localStorage.getItem("errors") ?? [];
+    let errors = localStorage.getItem("errors") || [];
     let newError = {
       date: new Date().toLocaleTimeString(),
       errorCode: ErrorCodes.hrmTimeout
