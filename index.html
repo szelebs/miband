@@ -125,7 +125,7 @@ function getErrorsData() {
   let errorsText = localStorage.getItem("errors");
   console.log(errorsText);
 
-  if (errorsText !== "") {
+  if (errorsText && errorsText !== "") {
     return JSON.parse(errorsText);
   }
 
