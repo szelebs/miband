@@ -58,12 +58,12 @@ button {
 }
 
 .err-modal {
-    --modal-width: 500px;
+    @modal-width: 500px;
 
     position: absolute;
     top: 50%;
-    left: calc(50% - var(--modal-width));
-    width: var(--modal-width);
+    left: calc(50% - @modal-width);
+    width: @modal-width;
     height: 300px;
     background-color:rgb(190, 190, 190);
     border-radius: 10px;
