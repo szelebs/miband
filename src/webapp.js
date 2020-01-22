@@ -52,6 +52,11 @@ async function scan() {
     document.getElementById("stop").addEventListener("click", () => {
       HMRStop(miband, log);
     });
+
+    document.getElementById("errors").addEventListener("click", () => {
+      document.getElementsByClass("err-modal").classList.add('err-modal-visible');
+    });
+
     // await test_all(miband, log);
   } catch (error) {
     log("Argh!", error);
