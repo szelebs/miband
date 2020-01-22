@@ -60,7 +60,7 @@ async function getHRMSingle(miband, log) {
     };
 
     errors.push(newError);
-  };
+  }
 }
 
 async function getHMRMultiple(miband, log) {
