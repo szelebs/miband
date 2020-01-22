@@ -58,9 +58,11 @@ async function getHRMSingle(miband, log) {
     let errors = [];
     let errorsText = localStorage.getItem("errors");
     
-    if (errorsText !== "") {
+    if (errorsText && errorsText !== "") {
       errors = JSON.parse(errorsText);
     }
+
+    console.log(errors);
 
     let newError = {
       date: new Date().toLocaleTimeString(),
