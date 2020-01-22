@@ -20,6 +20,7 @@
         <button id="multiHeartRate" class="btn-scan">Wielokrotny pomiar pulsu</button>
         <button id="stop" class="btn-scan">Stop</button>
         <button id="copy" class="btn-scan">Skopiuj dane do schowka</button>
+        <button id="errors" class="btn-scan">Wyświetl błędy</button>
         <label for="time">Częstotliwość pomiarów (min)</label>
         <input class="time" value="1" type="number" step="1" min="1" max="20" id="time">
         <label for="time">Liczba pomiarów</label>
@@ -30,6 +31,10 @@
       <pre id="output"></pre>
     </main>
     <canvas id="chart" width="600" height="400"></canvas>
+
+    <!-- Errors modal -->
+    <div class="err-modal">
+    </div>
 
     <script src="webapp.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

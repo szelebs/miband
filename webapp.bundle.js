@@ -7823,6 +7823,14 @@
 
             var miband = MiBand;
 
+            // Error Codes enum
+            const ErrorCodes = {
+              "hrmTimeout" : 1
+            };
+
+            Object.freeze(ErrorCodes);
+            // Error Codes enum
+
             function delay(ms) {
               return new Promise(resolve => setTimeout(resolve, ms));
             }
@@ -7868,8 +7876,13 @@
                 
                 log("Wynik:", value, " bpm");
               } catch (error) {
-                // Zapis do pliku
-                throw Error("Dupa");
+                let errors = localStorage.getItem("errors") || [];
+                let newError = {
+                  date: new Date().toLocaleTimeString(),
+                  errorCode: ErrorCodes.hrmTimeout
+                };
+
+                errors.push(newError);
               }
             }
 
@@ -7910,7 +7923,7 @@
             var test_3 = test.getHMRMultiple;
             var test_4 = test.HMRStop;
 
-            __$styleInject("html {\n  background: #eee;\n}\n.time {\n  width: 100px;\n  height: 20px;\n  border: 1px solid orange;\n  border-radius: 10px;\n  margin-left: 15px;\n}\nbody {\n  height: 100vh;\n  margin: 0;\n}\nmain {\n  overflow: scroll;\n  height: 150px;\n  width: 100%;\n}\nbutton {\n  background-color: orange;\n  color: black;\n  border: none;\n  margin: 15px 10px 15px 10px;\n  padding: 10px 15px 10px 15px;\n  transition: all 0.4s ease-in-out;\n  width: 200px;\n  border-radius: 10px;\n}\nbutton:hover {\n  cursor: pointer;\n  background-color: #4e1900;\n  color: white;\n}\n");
+            __$styleInject("html {\n  background: #eee;\n}\n.time {\n  width: 100px;\n  height: 20px;\n  border: 1px solid orange;\n  border-radius: 10px;\n  margin-left: 15px;\n}\nbody {\n  height: 100vh;\n  margin: 0;\n}\nmain {\n  overflow: scroll;\n  height: 150px;\n  width: 100%;\n}\nbutton {\n  background-color: orange;\n  color: black;\n  border: none;\n  margin: 15px 10px 15px 10px;\n  padding: 10px 15px 10px 15px;\n  transition: all 0.4s ease-in-out;\n  width: 200px;\n  border-radius: 10px;\n}\nbutton:hover {\n  cursor: pointer;\n  background-color: #4e1900;\n  color: white;\n}\n.err-modal {\n  display: absolute;\n  left: 50%;\n  width: 300px;\n  height: 300px;\n  background-color: cyan;\n}\n");
 
             const bluetooth = navigator.bluetooth;
 
