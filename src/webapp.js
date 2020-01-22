@@ -42,6 +42,7 @@ async function scan() {
 
     await miband.init();
     document.getElementById("singleHeartRate").addEventListener("click", () => {
+      console.log("KLIKLENTE 2");
       getHRMSingle(miband, log);
     });
 
@@ -54,6 +55,7 @@ async function scan() {
     });
 
     document.getElementById("errors").addEventListener("click", () => {
+      console.log("KLIKLENTE");
       document.getElementsByClass("err-modal").classList.add('err-modal-visible');
     });
 
