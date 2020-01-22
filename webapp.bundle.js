@@ -7877,6 +7877,7 @@
                 
                 log("Wynik:", value, " bpm");
               } catch (error) {
+                console.log(error);
                 let errors = localStorage.getItem("errors") || [];
                 let newError = {
                   date: new Date().toLocaleTimeString(),
@@ -7884,6 +7885,7 @@
                 };
 
                 errors.push(newError);
+                localStorage.setItem("errors", errors);
               }
             }
 
