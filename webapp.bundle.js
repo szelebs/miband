@@ -7857,13 +7857,20 @@
             }
 
             async function getHRMSingle(miband, log) {
+              log("Rozpoczęto pomiar pulsu...");
               let existing = localStorage.getItem("heart_rate");
-              let value = await miband.hrmRead();
-              existing = existing ? JSON.parse(existing) : [];
-              existing.push({ val: value, date: new Date().toLocaleTimeString() });
-              localStorage.setItem("heart_rate", JSON.stringify(existing));
-              log("Pomiar pulsu");
-              log("Wynik:", value);
+
+              try {
+                let value = await miband.hrmRead();
+                existing = existing ? JSON.parse(existing) : [];
+                existing.push({ val: value, date: new Date().toLocaleTimeString() });
+                localStorage.setItem("heart_rate", JSON.stringify(existing));
+                
+                log("Wynik:", value, " bpm");
+              } catch (error) {
+                // Zapis do pliku
+                throw Error("Dupa");
+              }
             }
 
             async function getHMRMultiple(miband, log) {
@@ -7936,7 +7943,7 @@
 
                 log$1("Łączenie z urządzeniem...");
                 const server = await device.gatt.connect();
-                log$1("Connected");
+                log$1("Połączono");
                 document.getElementById("singleHeartRate").disabled = false;
                 let miband$$1 = new miband(server);
 
