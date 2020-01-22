@@ -122,7 +122,13 @@ setInterval(() => {
 }, 5000);
 
 function getErrorsData() {
-  return localStorage.getItem("errors") || [];
+  let errorsText = localStorage.getItem("errors");
+
+  if (errorsText !== "") {
+    return JSON.parse(errorsText);
+  }
+
+  return [];
 }
     </script>
   </body>
