@@ -1,5 +1,13 @@
 "use strict";
 
+// Error Codes enum
+const ErrorCodes = {
+  "hrmTimeout" : 1
+}
+
+Object.freeze(ErrorCodes);
+// Error Codes enum
+
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -45,9 +53,14 @@ async function getHRMSingle(miband, log) {
     
     log("Wynik:", value, " bpm");
   } catch (error) {
-    // Zapis do pliku
-    throw Error("Dupa");
-  }
+    let errors = localStorage.getItem("errors") ?? [];
+    let newError = {
+      date: new Date().toLocaleTimeString(),
+      errorCode: ErrorCodes.hrmTimeout
+    };
+
+    errors.push(newError);
+  };
 }
 
 async function getHMRMultiple(miband, log) {
