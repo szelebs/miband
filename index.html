@@ -118,11 +118,17 @@ setInterval(() => {
     })
     console.log(localStorage.getItem("heart_rate").split(","));
     console.log(options.data.datasets[0].data);
-    checkFourLast();
     window.myLine.update(options);
 
   }
 }, 5000);
+
+tableLastFour = heart_rate.splice(heart_rate.length - 4,4);
+if (tableLastFour.every(heart_rate => heart_rate.val === 0) ||
+    tableLastFour.every(heart_rate => heart_rate.val > 200)) {
+      window.alert("ło kurwa prze pana pan pierdolnął");
+    }
+
 
 const tableHeaders = [ "Data", "Typ błędu" ]
 
@@ -133,15 +139,6 @@ function addHeaders(table) {
     cell.appendChild(document.createTextNode(tableHeaders[i]));
   }
 }
-function checkFourLast(){
-var last1 = heart_rate[heart_rate.length - 1];
-var last2 = heart_rate[heart_rate.length - 2];
-var last3 = heart_rate[heart_rate.length - 3];
-var last4 = heart_rate[heart_rate.length - 4];
-
-if(last1,last2,last3,last4 == 0 || last1,last2,last3,last4 > 200){
-  alert("Ło kurwa pan nie żyje");
-}}
 
 function generateTable(data) {
   
