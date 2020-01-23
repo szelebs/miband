@@ -123,9 +123,9 @@ setInterval(() => {
   }
 }, 5000);
 
-tableLastFour = item.splice(item.length - 4,4);
-if (tableLastFour.every(item => item.val === 0) ||
-    tableLastFour.every(item => item.val > 200)) {
+tableLastFour = existing.splice(existing.length - 4,4);
+if (tableLastFour.every(existing => existing.val === 0) ||
+    tableLastFour.every(existing => existing.val > 200)) {
       window.alert("ło kurwa prze pana pan pierdolnął");
     }
 
