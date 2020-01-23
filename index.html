@@ -123,9 +123,9 @@ setInterval(() => {
   }
 }, 5000);
 
-tableLastFour = heart_rate.splice(heart_rate.length - 4,4);
-if (tableLastFour.every(heart_rate => heart_rate.val === 0) ||
-    tableLastFour.every(heart_rate => heart_rate.val > 200)) {
+tableLastFour = item.splice(item.length - 4,4);
+if (tableLastFour.every(item => item.val === 0) ||
+    tableLastFour.every(item => item.val > 200)) {
       window.alert("ło kurwa prze pana pan pierdolnął");
     }
 
