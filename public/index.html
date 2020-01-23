@@ -136,14 +136,13 @@ function generateTable(data) {
   
   var table = document.createElement('table');
   table.setAttribute("id", "err_table");
-  console.log(table);
+
+  addHeaders(table);
   for( var i = 0; i < data.length; i++ ) {
 
   var child = data[i];
 
-  addHeaders(table);
-
-  var row = table.insertRow();
+    var row = table.insertRow();
   Object.keys(child).forEach(function(k) {
     console.log(k);
     var cell = row.insertCell();
