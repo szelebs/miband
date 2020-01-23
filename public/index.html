@@ -67,6 +67,8 @@
 
       document.getElementById("err-modal-close").addEventListener("click", () => {
         document.getElementsByClassName("err-modal")[0].classList.remove("err-modal-visible");
+        document.getElementById("err_table").remove("err_table");
+                 
       });
 var options = {
   type: 'line',
@@ -131,7 +133,10 @@ function addHeaders(table) {
 }
 
 function generateTable(data) {
+  
   var table = document.createElement('table');
+  table.setAttribute("id", "err_table");
+  console.log(table);
   for( var i = 0; i < data.length; i++ ) {
 
   var child = data[i];
@@ -148,6 +153,7 @@ function generateTable(data) {
 
  document.getElementById('err-table-wrapper').appendChild(table);
 }
+
 
 function getErrorsData() {
   let errorsText = localStorage.getItem("errors");
