@@ -123,11 +123,6 @@ setInterval(() => {
   }
 }, 5000);
 
-tableLastFour = existing.splice(existing.length - 4,4);
-if (tableLastFour.every(existing => existing.val === 0) ||
-    tableLastFour.every(existing => existing.val > 200)) {
-      window.alert("ło kurwa prze pana pan pierdolnął");
-    }
 
 
 const tableHeaders = [ "Data", "Typ błędu" ]
