@@ -131,8 +131,12 @@ setInterval(() => {
           ShowAlert = false;}
     }  
     console.log(ShowAlert);
-    if (existingv1[existingv1.length] !== 0){ShowAlert = true;}
-    console.log(ShowAlert);
+    let existingv2 = localStorage.getItem("heart_rate");
+    existingv2 = existingv2 ? JSON.parse(existingv2) : [];
+    let tabLast = existingv2.splice(existingv2.length - 1, 1);
+    
+    if (tabLast.every(item => item.val !==0)){ShowAlert = true;}
+    console.log(ShowAlert)
     
   }      
 }, 5000);
