@@ -119,6 +119,7 @@ setInterval(() => {
     console.log(localStorage.getItem("heart_rate").split(","));
     console.log(options.data.datasets[0].data);
     window.myLine.update(options);
+    debugger;
     let existingv1 = localStorage.getItem("heart_rate");
     existingv1 = existingv1 ? JSON.parse(existingv1) : [];
      
@@ -130,6 +131,7 @@ setInterval(() => {
           ShowAlert = false;}
     }  
     console.log(ShowAlert);
+    if (tabLastFour[tabLastFour.length] !== 0){ShowAlert = true;}
     
     
   }      
