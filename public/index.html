@@ -120,6 +120,7 @@ setInterval(() => {
     console.log(options.data.datasets[0].data);
     window.myLine.update(options);
     let existingv1 = localStorage.getItem("heart_rate");
+    existingv1 = existingv1 ? JSON.parse(existingv1) : [];
     console.log(existingv1);
     console.log(existingv1.length);
     if (existingv1.length >= 4){
