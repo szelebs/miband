@@ -124,7 +124,7 @@ setInterval(() => {
     console.log(existingv1);
     console.log(existingv1.length);
     var i;
-    for (i = 0;i>100;i++)
+    for (i = 0;i>100;i++){
     if (existingv1.length >= 4){
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
     if (tabLastFour.every(item => item.val === 0) ||
@@ -133,7 +133,7 @@ setInterval(() => {
            if (i === 1){
              console.log(tabLastFour);
            };}
-        }}
+        }}}
          console.log(i);
 }, 5000);
 
