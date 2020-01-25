@@ -127,12 +127,9 @@ setInterval(() => {
     if (existingv1.length >= 4){
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
     if (tabLastFour.every(item => item.val === 0) ||
-         tabLastFour.every(item => item.val >= 200)){ 
-           while(i = 1){
-           window.alert("kurde pan sie dopsze czuie??");
-           i++;}
-           }
-    }}
+         tabLastFour.every(item => item.val >= 200))
+         {i++;}
+         if (i == 1){window.alert("ło kurła chyba działa");}}}
 }, 5000);
 
 
