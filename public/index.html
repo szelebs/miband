@@ -99,7 +99,7 @@ window.onload = function() {
   let ctx = document.getElementById("chart").getContext("2d");
   window.myLine = new Chart(ctx, options);
 };
-function stopNotifs()
+
 setInterval(() => {
   if (options.data.datasets.length > 0) {
     let existing = localStorage.getItem("heart_rate");
