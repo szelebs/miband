@@ -119,7 +119,7 @@ setInterval(() => {
     console.log(localStorage.getItem("heart_rate").split(","));
     console.log(options.data.datasets[0].data);
     window.myLine.update(options);
-    debugger;
+    
     let existingv1 = localStorage.getItem("heart_rate");
     existingv1 = existingv1 ? JSON.parse(existingv1) : [];
      
