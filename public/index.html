@@ -119,6 +119,7 @@ setInterval(() => {
     console.log(localStorage.getItem("heart_rate").split(","));
     console.log(options.data.datasets[0].data);
     window.myLine.update(options);
+    console.log(existing.length);
     if (existing.length >= 4){
     let  tabLastFour = existing.splice(existing.length - 4, 4);
     if (tabLastFour.every(item => item.val === 0) ||
