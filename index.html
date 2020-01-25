@@ -124,15 +124,13 @@ setInterval(() => {
      
     if (existingv1.length >= 4){
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
-    if (ShowAlert === true){
-      if(tabLastFour.every(item => item.val === 0) ||
+    if (ShowAlert === true && tabLastFour.every(item => item.val === 0) ||
          tabLastFour.every(item => item.val >= 200)){
            console.log("dobrze obcina"); 
           ShowAlert = false;}
-          else if(tabLastFour[4] !==0)
-          {ShowAlert = true;}
-    }
-    }
+          else {ShowAlert = true;}
+    }  
+    
   }      
 }, 5000);
 
