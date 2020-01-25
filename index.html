@@ -124,11 +124,12 @@ setInterval(() => {
     console.log(existingv1);
     console.log(existingv1.length);
     var i = 0;
+    i++;
     if (existingv1.length >= 4){
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
     if (tabLastFour.every(item => item.val === 0) ||
          tabLastFour.every(item => item.val >= 200))
-         {i++;}
+         {console.log(tabLastFour);}
         }}
          console.log(i);
 }, 5000);
