@@ -99,7 +99,7 @@ window.onload = function() {
   let ctx = document.getElementById("chart").getContext("2d");
   window.myLine = new Chart(ctx, options);
 };
-
+var ShowAlert = true;
 setInterval(() => {
   if (options.data.datasets.length > 0) {
     let existing = localStorage.getItem("heart_rate");
@@ -124,11 +124,15 @@ setInterval(() => {
      
     if (existingv1.length >= 4){
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
-    if (tabLastFour.every(item => item.val === 0) ||
-         tabLastFour.every(item => item.val >= 200))
-         { console.log("dobrze obcina"); }
-         }}
-         
+    if (ShowAlert === true){
+      if(tabLastFour.every(item => item.val === 0) ||
+         tabLastFour.every(item => item.val >= 200)){
+           console.log("dobrze obcina"); 
+          ShowAlert = false;}
+          else {ShowAlert = true;}
+    }
+    }
+  }      
 }, 5000);
 
 
