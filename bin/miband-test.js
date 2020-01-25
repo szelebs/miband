@@ -34,7 +34,7 @@ async function scan() {
     await test_all(miband, log);
 
   } catch(error) {
-    log('Argh!', error);
+    log('Połączenie nieudane.');
   }
 }
 
