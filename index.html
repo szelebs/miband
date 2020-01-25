@@ -127,7 +127,7 @@ setInterval(() => {
     let  tabLastFour = existingv1.splice(existingv1.length - 4, 4);
     if (ShowAlert === true && (tabLastFour.every(item => item.val === 0) ||
          tabLastFour.every(item => item.val >= 200))){
-           console.log("dobrze obcina"); 
+           window.alert("Wykryto serię krytycznych pomiarów\nProszę skontaktować się z pacjentem\nlub skonsultować się z lekarzem prowadzącym"); 
           ShowAlert = false;}
     }  
     console.log(ShowAlert);
