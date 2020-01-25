@@ -20,9 +20,9 @@
         <button id="multiHeartRate" class="btn-scan">Wielokrotny pomiar pulsu</button>
         <button id="stop" class="btn-scan">Stop</button>
         <button id="copy" class="btn-scan">Skopiuj dane do schowka</button>
-        <button id="errors" class="btn-scan">Wyświetl błędy</button>
+        <button id="errors" class="btn-scan">Wyświetl błędy</button><br>
         <label for="time">Częstotliwość pomiarów (min)</label>
-        <input class="time" value="1" type="number" step="1" min="1" max="20" id="time">
+        <input class="time" value="1" type="number" step="1" min="1" max="20" id="time"><br><br>
         <label for="time">Liczba pomiarów</label>
         <input class="time" value="1" type="number" step="1" min="1" max="100" id="num">         
       </header>
@@ -76,9 +76,10 @@ var options = {
     labels: [],
     datasets: [
 	    {
-	      label: '',
+	      label: 'Wyniki pomiarów',
 	      data: [],
-      	borderWidth: 1
+        borderWidth: 1,
+        pointBorderColor: 'rgba(0,0,0,1)'
     	}
 		]
   },
