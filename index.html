@@ -49,7 +49,11 @@
       /*if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('serviceworker.js');
       }*/
-      const log = console.log;
+      function log() {
+           document.querySelector("main").style.display = "block";
+
+          output.innerHTML += [...arguments].join(" ") + "\n";
+      }
       document.getElementById('copy').addEventListener('click', copyData);
       function copyData() {
        let copyText = document.getElementById('inputCopy');

@@ -7948,7 +7948,7 @@
 
             async function scan() {
               if (!bluetooth) {
-                log$1("WebBluetooth nie jest wspierrany przez tą przeglądarkę!");
+                log$1("WebBluetooth nie jest wspierany przez tą przeglądarkę!");
                 return;
               }
 
