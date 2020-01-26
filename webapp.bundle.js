@@ -7877,7 +7877,7 @@
                 
                 log("Wynik:", value, " bpm");
               } catch (error) {
-                console.log(error);
+                log(error);
                 let errors = [];
                 let errorsText = localStorage.getItem("errors");
                 
