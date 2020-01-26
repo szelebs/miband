@@ -7948,11 +7948,12 @@
 
             async function scan() {
               if (!bluetooth) {
-                log$1("WebBluetooth is not supported by your browser!");
+                log$1("WebBluetooth nie jest wspierrany przez tą przeglądarkę!");
                 return;
               }
 
               try {
+                const bluetooth = navigator.bluetooth;
                 log$1("Próba połączenia...");
                 const device = await bluetooth.requestDevice({
                   filters: [{ services: [miband.advertisementService] }],
@@ -7986,7 +7987,7 @@
 
                 // await test_all(miband, log);
               } catch (error) {
-                log$1("Argh!", error);
+                log$1("Wystąpił błąd", error);
               }
             }
 
