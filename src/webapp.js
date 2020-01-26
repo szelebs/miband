@@ -17,11 +17,12 @@ function log() {
 
 async function scan() {
   if (!bluetooth) {
-    log("WebBluetooth is not supported by your browser!");
+    log("WebBluetooth nie jest wspierrany przez tą przeglądarkę!");
     return;
   }
 
   try {
+    const bluetooth = navigator.bluetooth;
     log("Próba połączenia...");
     const device = await bluetooth.requestDevice({
       filters: [{ services: [MiBand.advertisementService] }],
@@ -55,7 +56,7 @@ async function scan() {
 
     // await test_all(miband, log);
   } catch (error) {
-    log("Argh!", error);
+    log("Wystąpił błąd", error);
   }
 }
 
